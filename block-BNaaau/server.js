@@ -187,14 +187,12 @@ server12.listen(2346, () => {
 let server13 = http.createServer(handleRequest13)
 
 function handleRequest13(req, res) {
-  if(req.method === 'GET' && req.url === '/users?email=nodeserver@gmail.com') {
-    let parsedUrl = url.parse(req.url);
-    console.log(parsedUrl.pathname);
-    let emailParam = url.parse(req.query);
-    console.log(emailParam);
-  }
+  let parsedUrl = url.parse(req.url, true)
+  console.log(parsedUrl.pathname, req.url)
+  res.setHeader('content-type', 'application/json')
+  res.end(JSON.stringify(parsedUrl.query))
 }
 
 server13.listen(2213, () => {
-  console.log('=> Server listening on port 2213');
+  console.log('=> Server listening on port 2213')
 })
