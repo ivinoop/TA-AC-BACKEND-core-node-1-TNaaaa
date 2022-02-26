@@ -19,7 +19,7 @@ function handleRequest(req, res) {
   }
   else if(req.method ==='POST' && pathname === '/about') {
     res.writeHead(200, {'content-type':'application/json'});
-    res.end();
+    res.end('{message: this is a POST request}');
   }
   else {
     res.writeHead(404, {'content-type':'text/html'});
@@ -28,5 +28,5 @@ function handleRequest(req, res) {
 }
 
 server.listen(5000, () => {
-  console.log('=> server listening on port 4000');
+  console.log('=> server listening on port 5000');
 });
